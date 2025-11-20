@@ -1,0 +1,197 @@
+.dk-input {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-size: 14px;
+  color: #151924;
+}
+
+.dk-input__control {
+  position: relative;
+  width: 100%;
+}
+
+.dk-input__field {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d9dce5;
+  background: #ffffff;
+  color: #151924;
+  font: inherit;
+  padding: 18px 14px 10px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    color 0.15s ease;
+}
+
+.dk-input--has-prefix .dk-input__field {
+  padding-left: 48px;
+}
+
+.dk-input--has-suffix .dk-input__field {
+  padding-right: 48px;
+}
+
+.dk-input__control:hover .dk-input__field {
+  border-color: #b7bdd0;
+  box-shadow: 0 0 0 3px rgba(126, 125, 240, 0.1);
+}
+
+.dk-input__field:focus-visible {
+  border-color: #7e7df0;
+  box-shadow: 0 0 0 4px rgba(126, 125, 240, 0.16);
+}
+
+.dk-input__field::placeholder {
+  color: #aab1c0;
+}
+
+.dk-input__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #aab1c0;
+  width: 24px;
+  height: 24px;
+}
+
+.dk-input__icon--prefix {
+  left: 16px;
+}
+
+.dk-input__icon--suffix {
+  right: 12px;
+}
+
+.dk-input__label {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  padding: 0 6px;
+  color: #838aa1;
+  font-size: 14px;
+  line-height: 1.2;
+  pointer-events: none;
+  background: #ffffff;
+  border-radius: 4px;
+  transition: color 0.15s ease, font-size 0.15s ease, top 0.15s ease, left 0.15s ease,
+    transform 0.15s ease;
+  z-index: 1;
+}
+
+.dk-input--has-prefix .dk-input__label {
+  left: 48px;
+}
+
+.dk-input--active .dk-input__label {
+  top: -9px;
+  font-size: 12px;
+  color: #7e7df0;
+}
+
+.dk-input--focused .dk-input__label {
+  color: #7e7df0;
+}
+
+.dk-input__description {
+  color: #8d94a3;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dk-input--error .dk-input__field {
+  border-color: #e8515a;
+}
+
+.dk-input--error .dk-input__field:focus-visible {
+  border-color: #e8515a;
+  box-shadow: 0 0 0 4px rgba(232, 81, 90, 0.14);
+}
+
+.dk-input--error .dk-input__label,
+.dk-input--error .dk-input__description,
+.dk-input--error .dk-input__icon {
+  color: #e8515a;
+}
+
+.dk-input--disabled .dk-input__field {
+  background: #f5f6fa;
+  color: #9aa2b4;
+  border-color: #e2e5ee;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.dk-input--disabled .dk-input__icon,
+.dk-input--disabled .dk-input__description {
+  color: #bcc2ce;
+}
+
+.dk-input--disabled .dk-input__label {
+  color: #b9c0ce;
+  background: #f5f6fa;
+}
+
+.dk-input--disabled .dk-input__control:hover .dk-input__field,
+.dk-input--read .dk-input__control:hover .dk-input__field {
+  box-shadow: none;
+  border-color: #e2e5ee;
+}
+
+.dk-input--read .dk-input__field {
+  background: #f8f9fc;
+  border-color: #eef1f6;
+  color: #151924;
+  cursor: default;
+}
+
+.dk-input--read .dk-input__field--read {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+}
+
+.dk-input--read .dk-input__icon,
+.dk-input--read .dk-input__description {
+  color: #9aa2b4;
+}
+
+.dk-input--read .dk-input__label {
+  background: #f8f9fc;
+  color: #9aa2b4;
+}
+
+.dk-input .icon-button {
+  color: inherit;
+}
+
+.dk-input--disabled .icon-button,
+.dk-input--read .icon-button {
+  cursor: default;
+}
+
+.dk-input--size-s .dk-input__field,
+.dk-input--size-s .dk-input__field--read {
+  padding: 16px 12px 8px;
+  min-height: 40px;
+  font-size: 13px;
+}
+
+.dk-input--size-m .dk-input__field,
+.dk-input--size-m .dk-input__field--read {
+  min-height: 46px;
+}
+
+.dk-input--size-l .dk-input__field,
+.dk-input--size-l .dk-input__field--read {
+  padding: 20px 16px 12px;
+  min-height: 52px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+*** End Patch
