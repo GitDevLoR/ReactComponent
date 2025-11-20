@@ -1,0 +1,163 @@
+.dk-input {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.dk-input__control {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.dk-input__field-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.dk-input__field {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid #cbc7f5;
+  background: #fff;
+  color: #1f1f29;
+  font: inherit;
+  padding: 14px 14px 6px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.dk-input__field:focus-visible {
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.14);
+}
+
+.dk-input__label {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  color: #6b7280;
+  font-size: 14px;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.18s ease, color 0.18s ease, top 0.18s ease;
+}
+
+.dk-input--floating .dk-input__label {
+  top: 6px;
+  transform: scale(0.85);
+  color: #7c5cff;
+}
+
+.dk-input__placeholder-shadow {
+  opacity: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.dk-input__description {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dk-input--error .dk-input__field {
+  border-color: #f05a67;
+}
+
+.dk-input--error .dk-input__field:focus-visible {
+  border-color: #f05a67;
+  box-shadow: 0 0 0 4px rgba(240, 90, 103, 0.14);
+}
+
+.dk-input--error .dk-input__label {
+  color: #f05a67;
+}
+
+.dk-input--disabled .dk-input__field,
+.dk-input--read .dk-input__field {
+  background: #f1f2f7;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #d7d9e0;
+  box-shadow: none;
+}
+
+.dk-input--disabled .dk-input__label,
+.dk-input--read .dk-input__label {
+  color: #9ca3af;
+}
+
+.dk-input--disabled .dk-input__field:focus-visible,
+.dk-input--read .dk-input__field:focus-visible {
+  box-shadow: none;
+}
+
+.dk-input--read .dk-input__field {
+  pointer-events: none;
+}
+
+.dk-input__suffix,
+.dk-input__prefix {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  background: #fff;
+  color: #6b7280;
+  border: 1.5px solid #cbc7f5;
+  border-radius: 10px;
+}
+
+.dk-input__suffix {
+  margin-left: 8px;
+}
+
+.dk-input__prefix {
+  margin-right: 8px;
+}
+
+.dk-input--error .dk-input__suffix,
+.dk-input--error .dk-input__prefix {
+  border-color: #f05a67;
+}
+
+.dk-input--disabled .dk-input__suffix,
+.dk-input--disabled .dk-input__prefix,
+.dk-input--read .dk-input__suffix,
+.dk-input--read .dk-input__prefix {
+  background: #f1f2f7;
+  border-color: #d7d9e0;
+}
+
+.dk-input--size-s .dk-input__field {
+  padding: 10px 12px 4px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.dk-input--size-s .dk-input__label {
+  top: 10px;
+  font-size: 13px;
+}
+
+.dk-input--size-s.dk-input--floating .dk-input__label {
+  top: 4px;
+}
+
+.dk-input--size-l .dk-input__field {
+  padding: 16px 16px 8px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.dk-input--size-l .dk-input__label {
+  top: 16px;
+  font-size: 15px;
+}
+
+.dk-input--size-l.dk-input--floating .dk-input__label {
+  top: 8px;
+}
