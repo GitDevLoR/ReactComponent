@@ -38,17 +38,16 @@ export function Input({
   const [uncontrolledValue, setUncontrolledValue] = useState<string>(
     (defaultValue as string | undefined) ?? ''
   );
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setFocused] = useState(false);
 
   const currentValue = useMemo(() => {
     if (value !== undefined) return value as string;
     return uncontrolledValue;
   }, [uncontrolledValue, value]);
 
-  const isFilled = useMemo(() => {
-    if (currentValue === undefined || currentValue === null) return false;
-    return `${currentValue}`.length > 0;
-  }, [currentValue]);
+  const showFloatingLabel = Boolean(
+    label && (isFocused || currentValue || placeholder)
+  );
 
   const rootClass = [
     'dk-input',
@@ -56,11 +55,7 @@ export function Input({
     status === 'error' ? 'dk-input--error' : '',
     disabled ? 'dk-input--disabled' : '',
     read ? 'dk-input--read' : '',
-    prefix ? 'dk-input--has-prefix' : '',
-    suffix ? 'dk-input--has-suffix' : '',
-    label ? 'dk-input--floating' : '',
-    isFilled || isFocused ? 'dk-input--active' : '',
-    isFocused ? 'dk-input--focused' : '',
+    showFloatingLabel ? 'dk-input--floating' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -75,59 +70,38 @@ export function Input({
     }
   };
 
-  const renderField = () => {
-    if (read) {
-      return (
-        <div
-          className="dk-input__field dk-input__field--read"
-          id={inputId}
-          aria-describedby={descriptionId}
-          aria-readonly="true"
-        >
-          {currentValue || placeholder || ''}
-        </div>
-      );
-    }
-
-    return (
-      <input
-        id={inputId}
-        className="dk-input__field"
-        value={currentValue}
-        disabled={disabled}
-        readOnly={read}
-        aria-invalid={status === 'error'}
-        aria-describedby={descriptionId}
-        placeholder={placeholder}
-        onChange={handleChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        {...rest}
-      />
-    );
-  };
-
   return (
     <div className={rootClass}>
       <div className="dk-input__control">
-        {label ? (
-          <label className="dk-input__label" htmlFor={inputId}>
-            {label}
-          </label>
-        ) : null}
-        {renderField()}
-        {prefix ? (
-          <div className="dk-input__icon dk-input__icon--prefix" aria-hidden>
-            {prefix}
-          </div>
-        ) : null}
-        {suffix ? (
-          <div className="dk-input__icon dk-input__icon--suffix" aria-hidden>
-            {suffix}
-          </div>
-        ) : null}
+        {prefix ? <div className="dk-input__prefix">{prefix}</div> : null}
+        <div className="dk-input__field-wrapper">
+          {label ? (
+            <label className="dk-input__label" htmlFor={inputId}>
+              {label}
+            </label>
+          ) : null}
+          <input
+            id={inputId}
+            className="dk-input__field"
+            value={currentValue}
+            disabled={disabled}
+            readOnly={read}
+            aria-invalid={status === 'error'}
+            aria-describedby={descriptionId}
+            placeholder={placeholder}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            onChange={handleChange}
+            {...rest}
+          />
+          {placeholder ? (
+            <span className="dk-input__placeholder-shadow" aria-hidden>
+              {placeholder}
+            </span>
+          ) : null}
+        </div>
+        {suffix ? <div className="dk-input__suffix">{suffix}</div> : null}
       </div>
-
       {description ? (
         <div className="dk-input__description" id={descriptionId}>
           {description}

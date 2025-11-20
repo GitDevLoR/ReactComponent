@@ -1,197 +1,163 @@
 .dk-input {
   display: inline-flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
   font-size: 14px;
-  color: #151924;
 }
 
 .dk-input__control {
   position: relative;
+  display: flex;
+  align-items: stretch;
   width: 100%;
+}
+
+.dk-input__field-wrapper {
+  position: relative;
+  flex: 1;
 }
 
 .dk-input__field {
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #d9dce5;
-  background: #ffffff;
-  color: #151924;
+  border: 1.5px solid #cbc7f5;
+  background: #fff;
+  color: #1f1f29;
   font: inherit;
-  padding: 18px 14px 10px;
+  padding: 14px 14px 6px;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
-    color 0.15s ease;
-}
-
-.dk-input--has-prefix .dk-input__field {
-  padding-left: 48px;
-}
-
-.dk-input--has-suffix .dk-input__field {
-  padding-right: 48px;
-}
-
-.dk-input__control:hover .dk-input__field {
-  border-color: #b7bdd0;
-  box-shadow: 0 0 0 3px rgba(126, 125, 240, 0.1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .dk-input__field:focus-visible {
-  border-color: #7e7df0;
-  box-shadow: 0 0 0 4px rgba(126, 125, 240, 0.16);
-}
-
-.dk-input__field::placeholder {
-  color: #aab1c0;
-}
-
-.dk-input__icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #aab1c0;
-  width: 24px;
-  height: 24px;
-}
-
-.dk-input__icon--prefix {
-  left: 16px;
-}
-
-.dk-input__icon--suffix {
-  right: 12px;
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.14);
 }
 
 .dk-input__label {
   position: absolute;
   left: 14px;
   top: 14px;
-  padding: 0 6px;
-  color: #838aa1;
+  color: #6b7280;
   font-size: 14px;
-  line-height: 1.2;
   pointer-events: none;
-  background: #ffffff;
-  border-radius: 4px;
-  transition: color 0.15s ease, font-size 0.15s ease, top 0.15s ease, left 0.15s ease,
-    transform 0.15s ease;
-  z-index: 1;
+  transform-origin: left top;
+  transition: transform 0.18s ease, color 0.18s ease, top 0.18s ease;
 }
 
-.dk-input--has-prefix .dk-input__label {
-  left: 48px;
+.dk-input--floating .dk-input__label {
+  top: 6px;
+  transform: scale(0.85);
+  color: #7c5cff;
 }
 
-.dk-input--active .dk-input__label {
-  top: -9px;
-  font-size: 12px;
-  color: #7e7df0;
-}
-
-.dk-input--focused .dk-input__label {
-  color: #7e7df0;
+.dk-input__placeholder-shadow {
+  opacity: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .dk-input__description {
-  color: #8d94a3;
+  color: #6b7280;
   font-size: 13px;
   line-height: 1.4;
 }
 
 .dk-input--error .dk-input__field {
-  border-color: #e8515a;
+  border-color: #f05a67;
 }
 
 .dk-input--error .dk-input__field:focus-visible {
-  border-color: #e8515a;
-  box-shadow: 0 0 0 4px rgba(232, 81, 90, 0.14);
+  border-color: #f05a67;
+  box-shadow: 0 0 0 4px rgba(240, 90, 103, 0.14);
 }
 
-.dk-input--error .dk-input__label,
-.dk-input--error .dk-input__description,
-.dk-input--error .dk-input__icon {
-  color: #e8515a;
+.dk-input--error .dk-input__label {
+  color: #f05a67;
 }
 
-.dk-input--disabled .dk-input__field {
-  background: #f5f6fa;
-  color: #9aa2b4;
-  border-color: #e2e5ee;
+.dk-input--disabled .dk-input__field,
+.dk-input--read .dk-input__field {
+  background: #f1f2f7;
+  color: #6b7280;
   cursor: not-allowed;
+  border-color: #d7d9e0;
   box-shadow: none;
 }
 
-.dk-input--disabled .dk-input__icon,
-.dk-input--disabled .dk-input__description {
-  color: #bcc2ce;
+.dk-input--disabled .dk-input__label,
+.dk-input--read .dk-input__label {
+  color: #9ca3af;
 }
 
-.dk-input--disabled .dk-input__label {
-  color: #b9c0ce;
-  background: #f5f6fa;
-}
-
-.dk-input--disabled .dk-input__control:hover .dk-input__field,
-.dk-input--read .dk-input__control:hover .dk-input__field {
+.dk-input--disabled .dk-input__field:focus-visible,
+.dk-input--read .dk-input__field:focus-visible {
   box-shadow: none;
-  border-color: #e2e5ee;
 }
 
 .dk-input--read .dk-input__field {
-  background: #f8f9fc;
-  border-color: #eef1f6;
-  color: #151924;
-  cursor: default;
+  pointer-events: none;
 }
 
-.dk-input--read .dk-input__field--read {
-  min-height: 46px;
-  display: flex;
+.dk-input__suffix,
+.dk-input__prefix {
+  display: inline-flex;
   align-items: center;
-  padding: 0 14px;
+  padding: 0 10px;
+  background: #fff;
+  color: #6b7280;
+  border: 1.5px solid #cbc7f5;
+  border-radius: 10px;
 }
 
-.dk-input--read .dk-input__icon,
-.dk-input--read .dk-input__description {
-  color: #9aa2b4;
+.dk-input__suffix {
+  margin-left: 8px;
 }
 
-.dk-input--read .dk-input__label {
-  background: #f8f9fc;
-  color: #9aa2b4;
+.dk-input__prefix {
+  margin-right: 8px;
 }
 
-.dk-input .icon-button {
-  color: inherit;
+.dk-input--error .dk-input__suffix,
+.dk-input--error .dk-input__prefix {
+  border-color: #f05a67;
 }
 
-.dk-input--disabled .icon-button,
-.dk-input--read .icon-button {
-  cursor: default;
+.dk-input--disabled .dk-input__suffix,
+.dk-input--disabled .dk-input__prefix,
+.dk-input--read .dk-input__suffix,
+.dk-input--read .dk-input__prefix {
+  background: #f1f2f7;
+  border-color: #d7d9e0;
 }
 
-.dk-input--size-s .dk-input__field,
-.dk-input--size-s .dk-input__field--read {
-  padding: 16px 12px 8px;
-  min-height: 40px;
+.dk-input--size-s .dk-input__field {
+  padding: 10px 12px 4px;
+  border-radius: 8px;
   font-size: 13px;
 }
 
-.dk-input--size-m .dk-input__field,
-.dk-input--size-m .dk-input__field--read {
-  min-height: 46px;
+.dk-input--size-s .dk-input__label {
+  top: 10px;
+  font-size: 13px;
 }
 
-.dk-input--size-l .dk-input__field,
-.dk-input--size-l .dk-input__field--read {
-  padding: 20px 16px 12px;
-  min-height: 52px;
-  font-size: 15px;
-  border-radius: 12px;
+.dk-input--size-s.dk-input--floating .dk-input__label {
+  top: 4px;
 }
-*** End Patch
+
+.dk-input--size-l .dk-input__field {
+  padding: 16px 16px 8px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.dk-input--size-l .dk-input__label {
+  top: 16px;
+  font-size: 15px;
+}
+
+.dk-input--size-l.dk-input--floating .dk-input__label {
+  top: 8px;
+}
